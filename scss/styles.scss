@@ -1,0 +1,111 @@
+/* header background image
+fixed (no scroll), size - cover */
+.header {
+    background: #151515 
+        url('../images/intro-bg.jpg') 
+        no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  /* make social icons 50px from header bottom */
+  .header .social {
+    bottom: 50px;
+  }
+  
+  /* ::after is a psudo element
+  it creates a ghost/unseen element not added in 
+  html mrkup. we are using it for header image 
+  overlay. content is empty string. position it 
+  absolute within the container in top left. then
+  set the width and height to 100% so it covers
+  whole container.
+  then, set the background to a color with 
+  opacity 0.7  */
+  .header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+   /* adding a high z-index to text container
+   so that the text is not overlayed. text-container
+   is now in the front (of overlay)*/
+   .header .text-container {
+    z-index: 10;
+  }
+  
+  /* roles class in Lora font */
+  .header .roles {
+    font-family: 'lora-regular', serif;
+  }
+  
+  /* make about section img 200px  */
+  .about-img {
+    width: 200px;
+  }
+  
+  // on project image hover, scale img to 1.05,
+  //transition and opacity 
+  .project:hover {
+    transform: scale(1.05);
+    transition: all 0.5s ease-in-out;
+    opacity: 0.8;
+  }
+  
+  //add background image to services section
+  .services {
+    background: url('../images/bg.jpg') 
+      no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  //add overlay to image, start top left,
+  //stretch down h-100 w-100, bg dark, opacity
+  .services::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //higher opacity means darker
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  //bring services container to front (high z-index)
+  //to reduce overlay effect on text
+  .services .container {
+    z-index: 10;
+  }
+  
+  /* on smaller screens */
+  @media (max-width: 767px) {
+    /* reduce size of social icons */
+    .header .social i {
+      font-size: 30px;
+    }
+  
+    /* reduce font-size of roles text */
+    .header .roles {
+      font-size: 18px !important;
+    }
+  
+    /* make about section img & content stack
+    as column */
+    .about-content {
+      flex-direction: column;
+    }
+  
+    .stats .stat {
+      border-right: 0 !important;
+      margin-bottom: 40px;
+      border-bottom: var(--bs-dark) solid 1px;
+      padding-bottom: 20px;
+    }
+  }
